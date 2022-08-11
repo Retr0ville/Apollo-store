@@ -1,0 +1,60 @@
+Allwed 
+Class cmpls
+Redux
+Styled
+PLP
+PDP
+Cart  overlay
+
+color for swatch
+filter by category
+description as html
+change currency
+
+
+PLAN:
+Nav first approach, all cart and usd.converter
+PLP
+PDP
+CART 
+
+
+Remember to remove react-apollo
+/////////////////////////////////////////
+////////////////////////////////
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: palevioletred;
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+`;
+
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
+
+  render() {
+    return (
+      <Input
+        ref={this.inputRef}
+        placeholder="Hover to focus!"
+        onMouseEnter={() => {
+          this.inputRef.current.focus()
+        }}
+      />
+    );
+  }
+}
+
+render(
+  <Form />
+);
+/////////////////////////////////////////
+
+
+work: 
+     run: yarn create react-app boilerplate-react-typescript --template typescript
