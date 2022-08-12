@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from '@apollo/client'
 // const testId = "huarache-x-stussy-le"
 
 export const productById =(id: string)=>{
