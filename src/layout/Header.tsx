@@ -46,7 +46,7 @@ const HeaderWrapper = styled.div`
             top: 100%;
             width: var(--width);
             border-bottom: 2px solid #5ECE7B;
-            transition: width 0.15s ease-in-out;
+            transition: width 0.12s ease-in-out;
           }
         }
         &.active {

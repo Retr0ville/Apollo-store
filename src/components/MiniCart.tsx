@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
+import CartOverlay from "./CartOverlay";
 
 const MiniCartWrapper = styled.div`
   position: relative;
@@ -19,7 +20,7 @@ class MiniCart extends PureComponent {
           <img src="/images/empty-cart.svg" alt="cart" />
         </div>
         <div>
-          {/* // divitis */}
+          <CartOverlay />
         </div>
       </MiniCartWrapper>
     );
