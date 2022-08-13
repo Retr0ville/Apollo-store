@@ -10,7 +10,7 @@ const HeaderWrapper = styled.div`
   .main {
     max-width: 1440px;
     padding: 0 101px;
-    overflow: hidden;
+    // overflow: hidden;
     margin: 0 auto;
   }
   .header {
@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
     padding-top: 24px;
     justify-content: space-between;
   }
-  ul {
+  .categories {
     display: flex;
     gap: 32px;
     margin: 0;
@@ -68,7 +68,6 @@ const HeaderWrapper = styled.div`
     justify-content: center;
     width: 41px;
     height: 41px;
-    // padding: px;
     transform: translate(-50%, -50%);
     img {
       width: 31.18px;
@@ -92,7 +91,7 @@ class Header extends PureComponent {
       <HeaderWrapper>
         <div className="main">
           <div aria-label="header" className="header">
-            <ul aria-label="categories">
+            <ul className="categories" aria-label="categories">
               {categoryList.map((category) => (
                 <li key={category}>
                   <NavLink to={`/${category}`}>
