@@ -7,6 +7,16 @@ const CartOverlayWrapper = styled.div`
   overflow-y: auto;
   padding: 2rem 1rem;
   background-color: #fff;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .my-bag {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 25px;
+
+  }
   .cart-item {
     display: flex;
     align-items: center;
@@ -28,6 +38,7 @@ const CartOverlayWrapper = styled.div`
       display: flex;
       flex-direction: column;
       width: 15%;
+      height: 100%;
       justify-content: space-between;
       align-items: center;
     }
@@ -96,8 +107,8 @@ class CartOverlay extends PureComponent {
   render() {
     return (
       <CartOverlayWrapper>
-        <div>
-          <p>My Bag, {stubCrt.count()} items</p>
+        <div className="my-bag">
+          <p>My Bag, <span>{stubCrt.count()} items</span></p>
         </div>
         <div>
           {Object.keys(stubCrt.items).map((uniqItem) => {
