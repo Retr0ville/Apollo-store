@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
-import CartOverlay from "./CartOverlay";
+import CartOverlay from "../components/CartOverlay";
 
 const MiniCartWrapper = styled.div`
   position: relative;
