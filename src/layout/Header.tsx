@@ -61,7 +61,7 @@ const HeaderWrapper = styled.div`
   }
   .logo {
     position: absolute;
-    top: calc(50% - 15px);
+    top: calc(50% - 7.5px);
     left: 50%;
     display: flex;
     align-items: center;

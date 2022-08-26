@@ -10,6 +10,7 @@ const MiniCartWrapper = styled.div`
   // align-items: center;
   justify-content: center;
   top: 3px;
+  display: none;
 `;
 
 class MiniCart extends PureComponent {
