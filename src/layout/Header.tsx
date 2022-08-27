@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import CurrencySwitch from "../components/CurrencySwitch";
-import MiniCart from "../components/MiniCart";
+import MiniCart from "./MiniCart";
 
 const HeaderWrapper = styled.div`
   width: 100%;

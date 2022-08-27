@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
-import CartOverlay from "./CartOverlay";
+import CartOverlay from "../components/CartOverlay";
 
 const MiniCartWrapper = styled.div`
   position: relative;
@@ -10,6 +10,7 @@ const MiniCartWrapper = styled.div`
   // align-items: center;
   justify-content: center;
   top: 3px;
+  display: none;
 `;
 
 class MiniCart extends PureComponent {
