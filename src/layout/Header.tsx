@@ -44,9 +44,10 @@ const HeaderWrapper = styled.div`
             content: "";
             position: absolute;
             top: 100%;
+            opacity: 1;
             width: var(--width);
             border-bottom: 2px solid #5ECE7B;
-            transition: width 0.12s ease-in-out;
+            transition: all 0.12s ease-in-out;
           }
         }
         &.active {
