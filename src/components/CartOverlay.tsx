@@ -2,24 +2,47 @@ import React, { PureComponent } from "react";
 import styled from "styled-components";
 
 const CartOverlayWrapper = styled.div`
+  position: absolute;
+  right: -29px;
+  top: 50px;
   width: 325px;
-  max-height: 677px;
+  max-height: 0px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 2rem 1rem;
+  padding-inline: 1rem;
   background-color: #fff;
+  transition: all .1s ease-out;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fff;
+    border: .2px solid #999a; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #222;
+  }
   p {
     margin: 0;
     padding: 0;
   }
   .my-bag {
+    position: sticky;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    top: 0;
     font-size: 1rem;
     font-weight: 700;
     line-height: 25.6px;
-    margin-bottom: 2rem;
+    background-color: #fff;
+    z-index: 1000;
     span {
       font-weight: 500;
     }
+  }
+  .cart-items {
+    padding-top: 1rem;
   }
   .cart-item {
     position: relative;
@@ -41,7 +64,7 @@ const CartOverlayWrapper = styled.div`
       }
       .price {
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 25.6px;
         margin-bottom: 8px;
       }
@@ -105,13 +128,13 @@ const CartOverlayWrapper = styled.div`
       display: flex;
       flex-direction: column;
       margin-right: 4px;
-      // width: 45%;
+      width: 136px;
     }
     .cart-qty {
       display: flex;
       flex-direction: column;
-      outline: 1px solid #e6e6e6;
-      // width: 10%;
+      // outline: 1px solid #e6e6e6;
+      width: 24px;
       margin-right: 8px;
       align-items: center;
       .add, .minus, .qty {
@@ -127,11 +150,11 @@ const CartOverlayWrapper = styled.div`
       .qty {
         // margin-block: 100%;
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 25.6px;
         width: 24px;
         height: 24px;
-        border: 1px solid #1d1f22;
+        // border: 1px solid #1d1f22;
       }
       .add, .minus {
         position: absolute;
@@ -140,21 +163,64 @@ const CartOverlayWrapper = styled.div`
         border: 1px solid #1d1f22;
       }
       .add {
-        left: 136px;
+        left: 140px;
         top: 0;
       }
       .minus {
         bottom: 0;
-        left: 136px;
+        left: 140px;
       }
     }
     .cart-img {
-      // width: 40%;
+      width: 121px;
       img {
         width: 100%;
         height: auto;
         object-fit: contain;
       }
+    }
+  }
+  .action, .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  .total {
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen';
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 18px;
+    .cost {
+      font-family: Raleway;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 25.6px;
+    }
+  }
+  .action {
+    margin-top: 2rem;
+    .view-bag, .checkout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16.8px;
+      width: 140px;
+      height: 43px;
+    }
+    .view-bag {
+      padding: 1rem 2rem;
+      border: 1px solid #1D1F22;
+      background-color: #fff;
+    }
+    .checkout {
+      color: #fff;
+      border: none;
+      background-color: #5ece7b;
     }
   }
 `;
@@ -164,7 +230,7 @@ const stubCrt = {
       {
         name: "Apollo wayfarer",
         id: "random-id-1",
-        price: "€1,999",
+        price: 1999,
         quantity: 1,
         image: "/images/products/apollo-wayfarer.jpg",
         sizes: ["S", "M", "L", "XL"],
@@ -175,7 +241,7 @@ const stubCrt = {
       {
         name: "Apollo wayfarer",
         id: "random-id-2",
-        price: "€1,559",
+        price: 1559,
         quantity: 2,
         image: "/images/products/apollo-wayfarer.jpg",
         sizes: ["S", "M", "L", "XL"],
@@ -188,7 +254,7 @@ const stubCrt = {
       {
         name: "Neo Fender",
         id: "random-id-3",
-        price: "€1,999",
+        price: 1999,
         quantity: 1,
         image: "/images/products/neo-fender.jpg",
         sizes: ["S", "M", "L", "XL"],
@@ -208,15 +274,25 @@ const stubCrt = {
     })
     return qty;
   },
+  total: () => {
+    let curr = 0;
+    const cart = stubCrt.items || {};
+    Object.values(cart).forEach(key => {
+      key.forEach(item => {
+        curr += item.quantity * item.price;
+      })
+    })
+    return curr;
+  },
 };
 class CartOverlay extends PureComponent {
   render() {
     return (
-      <CartOverlayWrapper>
+      <CartOverlayWrapper className="cart-wrapper">
         <div className="my-bag">
           <p>My Bag, <span>{stubCrt.count()} items</span></p>
         </div>
-        <div>
+        <div className="cart-items">
           {Object.keys(stubCrt.items).map((uniqItem) => {
             return (
               stubCrt.items[uniqItem as keyof typeof stubCrt.items].map((item) => {
@@ -280,11 +356,23 @@ class CartOverlay extends PureComponent {
                   </div>
                 );
               })
-            )
-          }
+            )}
           )}
         </div>
-        <div></div>
+        <div>
+          <div className="total">
+            <span>Total</span>
+            <span className="cost">{stubCrt.total()}</span>
+          </div>
+          <div className="action">
+            <button className="view-bag">
+              View bag
+            </button>
+            <button className="checkout">
+              CHECK OUT
+            </button>
+          </div>
+        </div>
       </CartOverlayWrapper>
     );
   }
