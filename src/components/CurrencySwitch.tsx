@@ -50,8 +50,9 @@ const CurrencyWrapper = styled.div`
     width: 114px;
     max-height: 0px;
     border: none;
-    transform: scale(0), translateY(0);
+    transform: scale(0), translateY(-100px);
     opacity: 0;
+    background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
     list-style: none;
     overflow: hidden;

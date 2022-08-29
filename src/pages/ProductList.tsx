@@ -9,13 +9,21 @@ const ProductListWrapper = styled.div`
   width: 100%;
   margin-top: 80px;
   background-color: #fff;
+  .test {
+
+  }
   .main {
     display: flex;
+    align-items: center;
     flex-direction: column;
     max-width: 1238px;
-    margin: 0 101px;
+    // margin: 0 101px;
     width: 100%;
     overflow: hidden;
+    @media screen and (max-width: 1366px) {
+      max-width: 1440px;
+      // margin: 0 30px;
+    }
     h3 {
       font-size: 42px;
       font-weight: 400;
@@ -27,16 +35,17 @@ const ProductListWrapper = styled.div`
     .products-list {
       --per-row: 3;
       display: grid;
+      justify-content: start;
       width: 100%;
       grid-template-columns: repeat(var(--per-row), auto);
       grid-gap: 32px;
       margin: 0;
       margin-top: 103px;
       padding: 0;
-      @media screen and (max-width: 1241px) {
+      @media screen and (max-width: 1250px) {
         --per-row: 2;
       }
-      @media screen and (max-width: 825px) {
+      @media screen and (max-width: 856px) {
         --per-row: 1;
       }
     }
@@ -88,12 +97,15 @@ class ProductList extends PureComponent {
     return (
       <ProductListWrapper>
         <div className="main">
-          <h3>Category Name</h3>
-          <div className="products-list">
-             {products.map(product => (
-            <ProductItem key={product.id} product={product}/>
-          ))}
+          <div className="test">
+            <h3>Category Name</h3>
+            <div className="products-list">
+              {products.map(product => (
+              <ProductItem key={product.id} product={product}/>
+            ))}
+            </div>
           </div>
+          
         </div>
       </ProductListWrapper>
     );
