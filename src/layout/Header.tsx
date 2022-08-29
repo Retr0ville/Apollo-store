@@ -5,21 +5,36 @@ import CurrencySwitch from "../components/CurrencySwitch";
 import MiniCart from "./MiniCart";
 
 const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
   width: 100%;
   background-color: #fff;
+  z-index: 999;
   .main {
-    max-width: 1440px;
+    // max-width: 1440px;
+    // outline: 1px solid red;
     padding: 0 101px;
     // overflow: hidden;
-    margin: 0 auto;
+    @media screen and (max-width: 1360px) {
+      padding: 0 1rem;
+    }
   }
   .header {
     position: relative;
+    // outline: 1px solid crimson;
+    max-width: 1238px;
     width: 100%;
     height: 80px;
     display: flex;
     padding-top: 24px;
+    margin: 0 auto;
     justify-content: space-between;
+    @media screen and (max-width: 1250px) {
+      max-width: 804px;
+    }
+    @media screen and (max-width: 856px) {
+      max-width: 600px;
+    }
   }
   .categories {
     display: flex;
@@ -47,8 +62,11 @@ const HeaderWrapper = styled.div`
             opacity: 1;
             width: var(--width);
             border-bottom: 2px solid #5ECE7B;
-            transition: all 0.12s ease-in-out;
+            transition: all 0.1s ease-in-out;
           }
+        }
+        :hover {
+          color: #5ECE7B;
         }
         &.active {
           font-weight: 600;
@@ -84,7 +102,7 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const categoryList = ["clothes", "tech"];
+const categoryList = ["all", "clothes", "tech"];
 
 class Header extends PureComponent {
   render() {
